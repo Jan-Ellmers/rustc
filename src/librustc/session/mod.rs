@@ -642,6 +642,9 @@ impl Session {
     pub fn no_landing_pads(&self) -> bool {
         self.opts.debugging_opts.no_landing_pads || self.panic_strategy() == PanicStrategy::Abort
     }
+    pub fn remove_bounds_checks(&self) -> bool {
+        self.opts.debugging_opts.remove_bound_checks
+    }
     pub fn unstable_options(&self) -> bool {
         self.opts.debugging_opts.unstable_options
     }

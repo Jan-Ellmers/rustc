@@ -374,6 +374,10 @@ language_item_table! {
     // Libstd panic entry point. Necessary for const eval to be able to catch it
     BeginPanicFnLangItem,        "begin_panic",        begin_panic_fn,          Target::Fn;
 
+
+    IndexLangItem,               "index_lang_item",    index_lang_item_fn,      Target::Fn;
+    IndexMutLangItem,            "index_mut_lang_item",index_mut_lang_item_fn,  Target::Fn;
+
     ExchangeMallocFnLangItem,    "exchange_malloc",    exchange_malloc_fn,      Target::Fn;
     BoxFreeFnLangItem,           "box_free",           box_free_fn,             Target::Fn;
     DropInPlaceFnLangItem,       "drop_in_place",      drop_in_place_fn,        Target::Fn;

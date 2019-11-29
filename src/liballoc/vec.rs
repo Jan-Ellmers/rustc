@@ -298,6 +298,24 @@ pub struct Vec<T> {
 }
 
 ////////////////////////////////////////////////////////////////////////////////
+// Lang Item Functions
+////////////////////////////////////////////////////////////////////////////////
+
+#[cfg(not(bootstrap))]
+#[inline(allways)]
+#[lang = "index_lang_item"]
+fn index_lang_item<T, I: SliceIndex<[T]>>(vec: &Vec<T>, index: I) -> &I::Output {
+    unsafe { vec.get_unchecked(index) }
+}
+
+#[cfg(not(bootstrap))]
+#[inline(allways)]
+#[lang = "index_mut_lang_item"]
+fn index_mut_lang_item<T, I: SliceIndex<[T]>>(vec: &mut Vec<T>, index: I) -> &mut I::Output {
+    unsafe { vec.get_unchecked_mut(index) }
+}
+
+////////////////////////////////////////////////////////////////////////////////
 // Inherent methods
 ////////////////////////////////////////////////////////////////////////////////
 

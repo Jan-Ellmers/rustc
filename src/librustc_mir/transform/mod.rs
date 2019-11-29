@@ -21,6 +21,7 @@ pub mod simplify_branches;
 pub mod simplify;
 pub mod erase_regions;
 pub mod no_landing_pads;
+pub mod bound_check;
 pub mod rustc_peek;
 pub mod elaborate_drops;
 pub mod add_call_guards;
@@ -273,6 +274,8 @@ fn run_optimization_passes<'tcx>(
         &remove_noop_landing_pads::RemoveNoopLandingPads,
         &simplify::SimplifyCfg::new("final"),
         &simplify::SimplifyLocals,
+
+        &bound_check::BoundCheckPass,
 
         &add_call_guards::CriticalCallEdges,
         &dump_mir::Marker("PreCodegen"),
